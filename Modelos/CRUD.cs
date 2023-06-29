@@ -26,4 +26,13 @@ class CRUD
 
         return participante;
     }
+
+    public DatosParticipante SearchById(int dato){
+        DatosParticipante estudiante;
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            estudiante = context.DatosParticipantes.FirstOrDefault( dt => dt.IdDatosParticipante == dato);
+        }
+
+        return estudiante;
+    }
 }

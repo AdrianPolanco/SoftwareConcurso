@@ -13,4 +13,11 @@ class ControladorCRUD
     public DatosParticipante CrearDatos(DatosParticipante participante){
         return controlador.Create(participante);
     }
+
+    public DatosParticipante BuscarPorId(string dato){
+        int id;
+        bool convertir = int.TryParse(dato, out id);
+
+        return controlador.SearchById(id);
+    }
 }
