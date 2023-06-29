@@ -9,4 +9,8 @@ class ControladorCRUD
     public List<DatosParticipante> ObtenerDatos(){
         return controlador.Read();
     }
+
+    public DatosParticipante CrearDatos(DatosParticipante participante){
+        return controlador.Create(participante);
+    }
 }

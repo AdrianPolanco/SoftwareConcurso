@@ -16,4 +16,13 @@ class CRUD
             return participantes;
         }
     }
+
+    public DatosParticipante Create(DatosParticipante participante){
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            context.DatosParticipantes.Add(participante);
+            context.SaveChanges();
+        }
+
+        return participante;
+    }
 }

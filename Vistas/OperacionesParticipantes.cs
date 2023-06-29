@@ -4,7 +4,7 @@ using ConsoleTables;
 
 namespace Vistas;
 
-class OperacionesParticipantes{
+public partial class OperacionesParticipantes{
    List<DatosParticipante> elegidos = new List<DatosParticipante>();
 
     ControladorCRUD main = new ControladorCRUD();
@@ -31,15 +31,15 @@ class OperacionesParticipantes{
         
         PARTICIPANTES ACTIVOS
         ");
-        ConsoleTable tablaParticipantes = new ConsoleTable("Id","Nombre", "Apellido", "Participa", "Facilitador", "Matrícula");
-        ConsoleTable tablaInactiva = new ConsoleTable("Id","Nombre", "Apellido", "Participa", "Facilitador", "Matrícula");
+        ConsoleTable tablaParticipantes = new ConsoleTable("Id","Nombre", "Apellido", "Participa", "Matrícula");
+        ConsoleTable tablaInactiva = new ConsoleTable("Id","Nombre", "Apellido", "Participa", "Matrícula");
 
         foreach(DatosParticipante participante in activos){
-            tablaParticipantes.AddRow(participante.IdDatosParticipante, participante.Nombre, participante.Apellido, "Sí", (bool)participante.EsFacilitador? "Sí" : "No", participante.Matricula);
+            tablaParticipantes.AddRow(participante.IdDatosParticipante, participante.Nombre, participante.Apellido, "Sí", participante.Matricula);
         }
 
         foreach(DatosParticipante participante in inactivos){
-            tablaInactiva.AddRow(participante.IdDatosParticipante, participante.Nombre, participante.Apellido, "No", (bool)participante.EsFacilitador? "Sí" : "No", participante.Matricula);
+            tablaInactiva.AddRow(participante.IdDatosParticipante, participante.Nombre, participante.Apellido, "No", participante.Matricula);
         }
 
         string tablaMostradaActivos = tablaParticipantes.ToStringAlternative();
@@ -50,6 +50,7 @@ class OperacionesParticipantes{
             PARTICIPANTES INACTIVOS
         ");
         Console.WriteLine(tablaMostradaInactivos);
+
     }
 
 }

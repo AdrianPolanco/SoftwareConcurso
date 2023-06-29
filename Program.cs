@@ -2,8 +2,8 @@
 using SelectorAleatorioDefinitivo.Modelos;
 using Vistas;
 
-OperacionesParticipantes operacion = new OperacionesParticipantes();
-operacion.LeerParticipantes();
+Principal main = new Principal();
+main.Ejecutar();
 
 //Elegir participantes sin que se repitan
 
