@@ -11,6 +11,7 @@ class CRUD
             foreach (var post in context.DatosParticipantes.ToList())
             {
                 participantes.Add(post);
+            
             }
 
             return participantes;

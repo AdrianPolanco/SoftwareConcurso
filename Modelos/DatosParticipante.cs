@@ -13,8 +13,6 @@ public partial class DatosParticipante
 
     public bool? Participa { get; set; }
 
-    public bool? EsFacilitador { get; set; }
-
     public string? Matricula { get; set; }
 
     public virtual ICollection<Participante> Participantes { get; set; } = new List<Participante>();
