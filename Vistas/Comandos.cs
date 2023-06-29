@@ -9,6 +9,9 @@ class Comandos
         tablaAyuda.AddRow("HELP", "Muestra la tabla de comandos.");
         Tabla tabla = new Tabla();
         Principal principal = new Principal();
+        Registrar registro = new Registrar();
+
+        
 
          Console.WriteLine(@"
 Introduzca un comando:");
@@ -17,6 +20,9 @@ Introduzca un comando:");
         switch(comando){
             case "EXIT":
                 Console.WriteLine("Saliendo del programa...");
+                break;
+            case "REG":
+                registro.Ejecutar();
                 break;
             case "HELP":
                 tabla.EjecutarTabla();

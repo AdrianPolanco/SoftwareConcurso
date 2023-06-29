@@ -3,9 +3,8 @@ using SelectorAleatorioDefinitivo.Modelos;
 using Vistas;
 
 Principal main = new Principal();
-Registrar registro = new Registrar();
-registro.Ejecutar();
-//main.Ejecutar();
+
+main.Ejecutar();
 
 //Elegir participantes sin que se repitan
 
