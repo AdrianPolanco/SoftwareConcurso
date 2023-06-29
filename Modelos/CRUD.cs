@@ -35,4 +35,13 @@ class CRUD
 
         return estudiante;
     }
+
+    public DatosParticipante SearchByTuition(string dato){
+        DatosParticipante estudiante;
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            estudiante = context.DatosParticipantes.FirstOrDefault( dt => dt.Matricula == dato);
+        }
+
+        return estudiante;
+    }
 }

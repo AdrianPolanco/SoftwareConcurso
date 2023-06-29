@@ -20,4 +20,8 @@ class ControladorCRUD
 
         return controlador.SearchById(id);
     }
+
+    public DatosParticipante BuscarPorMatricula(string dato){
+        return controlador.SearchByTuition(dato);
+    }
 }

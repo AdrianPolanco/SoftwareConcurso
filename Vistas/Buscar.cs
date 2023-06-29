@@ -18,6 +18,7 @@ class Buscar {
                 BuscarEstudiante("ID");
                 break;
             case "MATR":
+                BuscarEstudiante("MATR");
                 break;
             default:
                 Console.WriteLine("Parametro inválido");
@@ -36,7 +37,9 @@ class Buscar {
             string id = Console.ReadLine();
             resultados = controlador.BuscarPorId(id); 
         }else if(config == "MATR"){
-
+            Console.Write("Inserta la matrícula del estudiante que deseas buscar: ");
+            string matricula = Console.ReadLine();
+            resultados = controlador.BuscarPorMatricula(matricula);
         }
         
 
