@@ -11,6 +11,7 @@ class Comandos
         Principal principal = new Principal();
         Registrar registro = new Registrar();
         Buscar buscar = new Buscar();
+        Actualizar actualizar = new Actualizar();
         Console.WriteLine(tablaAyuda.ToStringAlternative());
 
 
@@ -34,6 +35,10 @@ Introduzca un comando:");
                 break;
             case "SEARCH":
                 buscar.Ejecutar();
+                Ejecutar();
+                break;
+            case "UPD":
+                actualizar.Ejecutar();
                 Ejecutar();
                 break;
             default:

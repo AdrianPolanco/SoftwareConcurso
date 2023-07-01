@@ -3,6 +3,7 @@ using SelectorAleatorioDefinitivo.Modelos;
 using Vistas;
 
 Principal main = new Principal();
+
 main.Ejecutar();
 
 //Elegir participantes sin que se repitan

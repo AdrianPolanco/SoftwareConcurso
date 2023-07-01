@@ -44,4 +44,68 @@ class CRUD
 
         return estudiante;
     }
+
+    public DatosParticipante UpdateById(int id, string nombre, string apellido, string matricula){
+        DatosParticipante registro;
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            registro = context.DatosParticipantes.Single(dp => dp.IdDatosParticipante == id);
+            if(nombre != ""){
+                registro.Nombre = nombre;
+            }
+
+            if(apellido != ""){
+                registro.Apellido = apellido;
+            }
+
+            if(matricula != ""){
+                registro.Matricula = matricula;
+            }
+
+            context.SaveChanges();
+            
+        }
+
+        return registro;
+    }
+
+    public DatosParticipante UpdateByTuition(string idMatricula, string nombre, string apellido, string matricula){
+        DatosParticipante registro;
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            registro = context.DatosParticipantes.Single(dp => dp.Matricula == idMatricula);
+            if(nombre != ""){
+                registro.Nombre = nombre;
+            }
+
+            if(apellido != ""){
+                registro.Apellido = apellido;
+            }
+
+            if(matricula != ""){
+                registro.Matricula = matricula;
+            }
+
+            context.SaveChanges();
+            
+        }
+
+        return registro;
+    }
+
+    public bool CheckId(int id){
+
+        try
+        {
+            DatosParticipante registro;
+            using (ConcursoDbContext context = new ConcursoDbContext())
+            {
+                registro = context.DatosParticipantes.Single(dp => dp.IdDatosParticipante == id);
+                return true;
+            }
+        }
+        catch
+        { 
+            return false; 
+        }
+
+    }
 }
