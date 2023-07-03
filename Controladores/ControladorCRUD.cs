@@ -39,4 +39,18 @@ class ControladorCRUD
         bool convertir = int.TryParse(id, out idDef);
         return controlador.CheckId(idDef);
     }
+
+    public bool ChequearMatricula(string matricula){
+        return controlador.CheckTuition(matricula);
+    }
+
+    public DatosParticipante EliminarEstudiantePorId(string id){
+        int idDef;
+        bool convertir = int.TryParse(id, out idDef);
+        return controlador.DeleteById(idDef);
+    }
+
+    public DatosParticipante EliminarEstudiantePorMatricula(string matricula){
+        return controlador.DeleteByTuition(matricula);
+    }
 }

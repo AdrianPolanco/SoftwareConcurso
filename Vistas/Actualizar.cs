@@ -11,7 +11,7 @@ class Actualizar{
         Console.WriteLine(tablaTitulo.ToStringAlternative());
 
         Console.Write("Si deseas actualizar Id escribe 'ID', si deses actualizar por Matrícula escribe 'MATR': ");
-        string valor = Console.ReadLine();
+        string valor = Console.ReadLine().ToUpper();
 
         switch (valor)
         {
@@ -66,6 +66,8 @@ class Actualizar{
             bool matriculaCorrecta = verificar.VerificarMatricula(matriculaParametro);
             if(matriculaCorrecta){
                 DatosParticipante datosEstudiante = controlador.BuscarPorMatricula(matriculaParametro);
+                bool estudianteEncontrado = controlador.ChequearMatricula(matriculaParametro);
+                if(estudianteEncontrado){
                 tablaResultado.AddRow(datosEstudiante.IdDatosParticipante, datosEstudiante.Nombre, datosEstudiante.Apellido, datosEstudiante.Matricula);
                 Console.WriteLine(tablaResultado.ToStringAlternative());
                 Console.Write("Nombre: ");
@@ -82,8 +84,12 @@ class Actualizar{
                 ConsoleTable tablaActualizada = new ConsoleTable("ID", "Nombre", "Apellido", "Matricula");
                 tablaActualizada.AddRow(resultados.IdDatosParticipante, resultados.Nombre, resultados.Apellido, resultados.Matricula);
                 Console.WriteLine(tablaActualizada.ToStringAlternative());
+                }else{
+                    Console.WriteLine($"No se encontraron resultados, la matricula {matriculaParametro} no pertenece a ningún estudiante registrado.");
+                }
+                
             }else{
-                Console.WriteLine("No se encontro el estudiante solicitado.");
+                Console.WriteLine(@"ERROR: Formato incorrecto, no se admiten cadenas que no tengan 9 caracteres, el formato de este campo es, ejemplo: 2023-5487");
             }
             
         }

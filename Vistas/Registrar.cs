@@ -31,7 +31,7 @@ class Registrar
             matricula = Console.ReadLine();
             esValida = verificar.VerificarMatricula(matricula);
         }
-        Console.Write("Participa(Formato admitido: 1 si participa o 0 si no participa):");
+        Console.Write("Participa(Formato admitido: 1 si participa, cualquier otro numero si no participa):");
         string participaInicial = Console.ReadLine();
         bool participa = verificar.VerificarParticipacion(participaInicial);
 
@@ -59,11 +59,7 @@ class Registrar
 
         }catch(Exception err){
             Console.WriteLine("Algo ha ido mal en el registro.");
-        }finally{
-            comandos.Ejecutar();
-        }
-
-        
+        } 
     }
 
 }

@@ -15,7 +15,7 @@ class Buscar
         Console.WriteLine(tablaTitulo.ToStringAlternative());
 
         Console.Write("Si deseas buscar por Id escribe 'ID', si deses buscar por Matrícula escribe 'MATR': ");
-        string valor = Console.ReadLine();
+        string valor = Console.ReadLine().ToUpper();
 
         switch (valor)
         {

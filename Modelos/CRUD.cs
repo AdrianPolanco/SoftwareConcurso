@@ -108,4 +108,44 @@ class CRUD
         }
 
     }
+
+    public bool CheckTuition(string matricula){
+
+        try
+        {
+            DatosParticipante registro;
+            using (ConcursoDbContext context = new ConcursoDbContext())
+            {
+                registro = context.DatosParticipantes.Single(dp => dp.Matricula == matricula);
+                return true;
+            }
+        }
+        catch
+        { 
+            return false; 
+        }
+
+    }
+
+    public DatosParticipante DeleteById(int id){
+        DatosParticipante registro;
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            registro = context.DatosParticipantes.Single(dp => dp.IdDatosParticipante == id);
+            context.DatosParticipantes.Remove(registro);
+            context.SaveChanges();
+        }
+
+        return registro;
+    }
+
+    public DatosParticipante DeleteByTuition(string tuition){
+        DatosParticipante registro;
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            registro = context.DatosParticipantes.Single(dp => dp.Matricula == tuition);
+            context.DatosParticipantes.Remove(registro);
+            context.SaveChanges();
+        }
+
+        return registro;
+    }
 }
