@@ -1,3 +1,18 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.gradient-text {
+    background: linear-gradient(180deg,  #74fff3, #A7F3D0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .suma-linea {
+    border-top: 2px solid black;
+    width: 50%;
+    margin: 20px auto;
+  }
+  
