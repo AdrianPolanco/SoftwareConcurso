@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hHwQLPZ74P8d1mxoTXcnaPqSz4tUUUnZvn9tE/dns87TGPhztBezvjJepbyFQh1ZVmyM4NMUAgeGgR3fEYSFtg==",
+  "dgSpecHash": "9qhu3/s9JeG6mkn8Lo9RQLMIhHlqVk33SCtpv7DNLqC2KgVA1eYfi8QQwQUl5L7VcQh75uLnKHPB1bWbwzl9Ew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\adfer\\Desktop\\SelectorAleatorioDefinitivo\\SelectorAleatorioDefinitivo.csproj",
+  "projectFilePath": "C:\\Users\\adfer\\OneDrive\\Escritorio\\SoftwareConcurso\\softwareconcurso\\SelectorAleatorioDefinitivo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\adfer\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\adfer\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
