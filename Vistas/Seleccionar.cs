@@ -12,13 +12,15 @@ class Seleccionar{
         List<DatosParticipante> participantesActivos = new List<DatosParticipante>();
         List<DatosParticipante> elegidos = new List<DatosParticipante>();
 
+        
         foreach(DatosParticipante participante in listaGeneral){
             if((bool)participante.Participa){
                 participantesActivos.Add(participante);
             }
         }
 
-        Random random = new Random();
+        if(participantesActivos.Count > 1){
+            Random random = new Random();
 
         int contador = 2;
         while(contador>0){
@@ -51,7 +53,11 @@ class Seleccionar{
         Console.WriteLine(@"Estos son los ganadores del sorteo y ya han sido agregados al historial de ganadores:
          ");
         Console.WriteLine(tablaMostrada);
-            }
+        }else{
+            Console.WriteLine("ERROR: No hay suficientes participantes para hacer la selección, pruebe agregando más vía registro o inclusión");;
+        }
+        
+     }
 
     public List<DatosParticipante> RetirarGanadores(List<DatosParticipante> ganadores){
         foreach(DatosParticipante ganador in ganadores){

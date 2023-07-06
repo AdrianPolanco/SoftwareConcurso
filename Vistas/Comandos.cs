@@ -16,7 +16,7 @@ class Comandos
         OperacionesParticipantes operacion = new OperacionesParticipantes();
         GenerarReporte reporte = new GenerarReporte();    
         Status status = new Status();
-
+        Seleccionar seleccionar = new Seleccionar();
         Console.WriteLine(tablaAyuda.ToStringAlternative());
 
 
@@ -47,10 +47,12 @@ Introduzca un comando:");
                 }else{
                     Console.WriteLine("Opción inválida, reiniciando programa...."); 
                 }
+                operacion.LeerParticipantes();
                 Ejecutar();
                 break;
             case "REPORT":
                 reporte.CrearDocumento();
+                operacion.LeerParticipantes();
                 Ejecutar();
                 break;
             case "HELP":
@@ -70,6 +72,11 @@ Introduzca un comando:");
                 break;
             case "DEL":
                 eliminar.Ejecutar();
+                operacion.LeerParticipantes();
+                Ejecutar();
+                break;
+            case "GO":
+                seleccionar.SeleccionarGanadores();
                 operacion.LeerParticipantes();
                 Ejecutar();
                 break;
