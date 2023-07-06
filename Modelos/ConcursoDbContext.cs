@@ -17,7 +17,7 @@ public partial class ConcursoDbContext : DbContext
 
     public virtual DbSet<DatosParticipante> DatosParticipantes { get; set; }
 
-    public virtual DbSet<Participante> Participantes { get; set; }
+    public virtual DbSet<Seleccionado> Seleccionados { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
@@ -25,6 +25,8 @@ public partial class ConcursoDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
+
         modelBuilder.Entity<DatosParticipante>(entity =>
         {
             entity.HasKey(e => e.IdDatosParticipante).HasName("PK__DATOS_PA__558501BFCDFEA497");
@@ -43,15 +45,24 @@ public partial class ConcursoDbContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Participante>(entity =>
+        modelBuilder.Entity<Seleccionado>(entity =>
         {
-            entity.HasKey(e => e.IdParticipante).HasName("PK__PARTICIP__56139242AC426425");
+            entity
+                .HasNoKey()
+                .ToTable("SELECCIONADOS");
 
-            entity.ToTable("PARTICIPANTES");
-
-            entity.HasOne(d => d.IdDatosParticipanteNavigation).WithMany(p => p.Participantes)
-                .HasForeignKey(d => d.IdDatosParticipante)
-                .HasConstraintName("fk_IdDatosParticipante");
+            entity.Property(e => e.Apellido)
+                .HasMaxLength(30)
+                .IsUnicode(false);
+            entity.Property(e => e.Fecha).HasColumnType("datetime");
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Matricula)
+                .HasMaxLength(9)
+                .IsUnicode(false)
+                .IsFixedLength();
+            entity.Property(e => e.Nombre)
+                .HasMaxLength(30)
+                .IsUnicode(false);
         });
 
         OnModelCreatingPartial(modelBuilder);
