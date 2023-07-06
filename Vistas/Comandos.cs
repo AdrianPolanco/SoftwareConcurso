@@ -55,6 +55,11 @@ Introduzca un comando:");
                 operacion.LeerParticipantes();
                 Ejecutar();
                 break;
+            case "REPORT SELECTED":
+                reporte.CrearDocumentoSeleccionados();
+                operacion.LeerParticipantes();
+                Ejecutar();
+                break;
             case "HELP":
                 tabla.EjecutarTabla();
                 operacion.LeerParticipantes();

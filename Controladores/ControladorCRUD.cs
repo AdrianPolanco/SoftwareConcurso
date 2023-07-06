@@ -71,4 +71,8 @@ class ControladorCRUD
     public List<Seleccionado> InsertarHistoria(List<DatosParticipante> ganadores){
         return controlador.InsertHistory(ganadores);
     }
+
+    public List<Seleccionado> LeerHistorialSeleccionados(){
+        return controlador.ReadSelectedHistory();
+    }
 }

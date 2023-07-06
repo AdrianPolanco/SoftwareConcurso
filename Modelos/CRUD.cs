@@ -203,4 +203,15 @@ class CRUD
 
         return ganadoresRegistrados;
     }
+
+    public List<Seleccionado> ReadSelectedHistory(){
+        List<Seleccionado> seleccionados = new List<Seleccionado>();
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            foreach(Seleccionado seleccionado in context.Seleccionados.ToList()){
+                seleccionados.Add(seleccionado);
+            }
+        }
+
+        return seleccionados;
+    }
 }

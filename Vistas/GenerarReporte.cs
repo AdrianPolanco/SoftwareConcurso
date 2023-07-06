@@ -27,14 +27,23 @@ class GenerarReporte{
         return html;
     }
 
+    public string CrearTemplateSeleccionados(){
+        List<Seleccionado> seleccionados = controlador.LeerHistorialSeleccionados();
+
+        string html = htmlPlantilla.CrearSeleccionados(seleccionados);
+
+        return html;
+    }
+
     public void CrearDocumento(){
         string html = CrearTemplate();
-        string carpeta = @$"C:\Users\adfer\OneDrive\Escritorio\SoftwareConcurso\SoftwareConcurso\Vistas\static\Reportes\ReportesGeneralReport-{DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
-        
+        string carpeta = @$"C:\Users\adfer\OneDrive\Escritorio\SoftwareConcurso\SoftwareConcurso\Vistas\static\Reportes\Generales\ReportesGeneralReport-{DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+        PdfDocument document = new PdfDocument();
         HtmlToPdf converter = new HtmlToPdf();
 
         PdfDocument pdf = converter.ConvertHtmlString(html,@"C:\Users\adfer\OneDrive\Escritorio\SoftwareConcurso\SoftwareConcurso\Vistas\static\output.css");
         pdf.Save(carpeta);
+        pdf.Close();
          ProcessStartInfo psi = new ProcessStartInfo
     {
         FileName = "cmd",
@@ -57,4 +66,36 @@ class GenerarReporte{
 
     process.WaitForExit();
     }
-}
+
+    public void CrearDocumentoSeleccionados(){
+        string html = CrearTemplateSeleccionados();
+        string carpeta = @$"C:\Users\adfer\OneDrive\Escritorio\SoftwareConcurso\SoftwareConcurso\Vistas\static\Reportes\Seleccionados\SelectedReport-{DateTime.Now.ToString("yyyyMMddHHmmss")}.pdf";
+        PdfDocument document = new PdfDocument();
+        HtmlToPdf converter = new HtmlToPdf();
+
+        PdfDocument pdf = converter.ConvertHtmlString(html,@"C:\Users\adfer\OneDrive\Escritorio\SoftwareConcurso\SoftwareConcurso\Vistas\static\styles.css");
+        pdf.Save(carpeta);
+        pdf.Close();
+         ProcessStartInfo psi = new ProcessStartInfo
+    {
+        FileName = "cmd",
+        RedirectStandardInput = true,
+        UseShellExecute = false,
+        CreateNoWindow = true
+    };
+
+    Process process = new Process();
+    process.StartInfo = psi;
+    process.Start();
+
+    using (StreamWriter sw = process.StandardInput)
+    {
+        if (sw.BaseStream.CanWrite)
+        {
+            sw.WriteLine(@"start " + carpeta);
+        }
+    }
+
+    process.WaitForExit();
+    }
+    }

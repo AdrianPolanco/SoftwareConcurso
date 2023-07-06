@@ -3,6 +3,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("output.css");
 
 .gradient-text {
     background: linear-gradient(180deg,  #74fff3, #A7F3D0);
