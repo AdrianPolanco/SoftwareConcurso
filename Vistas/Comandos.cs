@@ -14,13 +14,18 @@ class Comandos
         Actualizar actualizar = new Actualizar();
         Eliminar eliminar = new Eliminar();
         OperacionesParticipantes operacion = new OperacionesParticipantes();
+        GenerarReporte reporte = new GenerarReporte();    
+        Status status = new Status();
+
         Console.WriteLine(tablaAyuda.ToStringAlternative());
+
 
 
 
         Console.WriteLine(@"
 Introduzca un comando:");
         string comando = Console.ReadLine().ToUpper();
+
 
         switch(comando){
             case "EXIT":
@@ -30,6 +35,22 @@ Introduzca un comando:");
             case "REG":
                 registro.Ejecutar();
                 operacion.LeerParticipantes();
+                Ejecutar();
+                break;
+            case "CHANGE STATUS":
+                Console.Write("Introduzca 'ID' si desea buscar por ID o 'MATR' si desea buscar por matricula: ");
+                string opcion = Console.ReadLine().ToUpper();
+                if(opcion == "ID"){         
+                    status.CambiarEstadoPorId();
+                }else if(opcion == "MATR"){
+                    status.CambiarEstadoPorMatricula();
+                }else{
+                    Console.WriteLine("Opción inválida, reiniciando programa...."); 
+                }
+                Ejecutar();
+                break;
+            case "REPORT":
+                reporte.CrearDocumento();
                 Ejecutar();
                 break;
             case "HELP":

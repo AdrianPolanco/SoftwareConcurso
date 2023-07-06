@@ -44,6 +44,16 @@ class ControladorCRUD
         return controlador.CheckTuition(matricula);
     }
 
+    public DatosParticipante CambiarStatusPorId(string id){
+        int idDef;
+        bool convertir = int.TryParse(id, out idDef);
+        return controlador.ChangeStatusById(idDef);
+    }
+
+    public DatosParticipante CambiarStatusPorMatricula(string matricula){
+        return controlador.ChangeStatusByTuition(matricula);
+    }
+
     public DatosParticipante EliminarEstudiantePorId(string id){
         int idDef;
         bool convertir = int.TryParse(id, out idDef);

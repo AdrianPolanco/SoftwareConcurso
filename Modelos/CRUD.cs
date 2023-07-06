@@ -68,6 +68,8 @@ class CRUD
         return registro;
     }
 
+
+
     public DatosParticipante UpdateByTuition(string idMatricula, string nombre, string apellido, string matricula){
         DatosParticipante registro;
         using(ConcursoDbContext context = new ConcursoDbContext()){
@@ -147,5 +149,34 @@ class CRUD
         }
 
         return registro;
+    } 
+       public DatosParticipante ChangeStatusById(int id){
+        DatosParticipante participante;
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            participante = context.DatosParticipantes.Single(dp => dp.IdDatosParticipante == id);
+            if((bool)participante.Participa){
+                participante.Participa = false;
+            }else{
+                participante.Participa = true;
+            }
+            context.SaveChanges();
+        }
+
+        return participante;
+    }
+
+    public DatosParticipante ChangeStatusByTuition(string tuition){
+        DatosParticipante participante;
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            participante = context.DatosParticipantes.Single(dp => dp.Matricula == tuition);
+            if((bool)participante.Participa){
+                participante.Participa = false;
+            }else{
+                participante.Participa = true;
+            }
+            context.SaveChanges();
+        }
+
+        return participante;
     }
 }
