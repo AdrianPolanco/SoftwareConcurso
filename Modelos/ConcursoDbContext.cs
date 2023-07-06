@@ -47,21 +47,24 @@ public partial class ConcursoDbContext : DbContext
 
         modelBuilder.Entity<Seleccionado>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("SELECCIONADOS");
+            entity.HasKey(e => e.Id).HasName("PK__SELECCIO__3214EC2750B3D4D9");
 
+            entity.ToTable("SELECCIONADOS");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Apellido)
                 .HasMaxLength(30)
                 .IsUnicode(false);
             entity.Property(e => e.Fecha).HasColumnType("datetime");
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Matricula)
                 .HasMaxLength(9)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.Nombre)
                 .HasMaxLength(30)
+                .IsUnicode(false);
+            entity.Property(e => e.Rol)
+                .HasMaxLength(50)
                 .IsUnicode(false);
         });
 

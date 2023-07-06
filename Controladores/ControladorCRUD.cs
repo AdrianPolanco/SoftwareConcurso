@@ -63,4 +63,12 @@ class ControladorCRUD
     public DatosParticipante EliminarEstudiantePorMatricula(string matricula){
         return controlador.DeleteByTuition(matricula);
     }
+
+    public DatosParticipante ActualizarGanadores(int id){
+        return controlador.ChangeStatusById(id);
+    }
+
+    public List<Seleccionado> InsertarHistoria(List<DatosParticipante> ganadores){
+        return controlador.InsertHistory(ganadores);
+    }
 }

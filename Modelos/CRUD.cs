@@ -179,4 +179,28 @@ class CRUD
 
         return participante;
     }
+
+    public List<Seleccionado> InsertHistory(List<DatosParticipante> ganadores){
+        List<Seleccionado> ganadoresRegistrados = new List<Seleccionado>();
+        foreach(DatosParticipante ganador in ganadores){
+            ganadoresRegistrados.Add(
+                new Seleccionado(){
+                    Nombre = ganador.Nombre,
+                    Apellido = ganador.Apellido,
+                    Matricula = ganador.Matricula,
+                    Rol = ganadores.IndexOf(ganador) == 0? "Instructor": "Desarrollador en vivo",
+                    Fecha = DateTime.Now
+                });
+        };
+
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            foreach(Seleccionado seleccionado in ganadoresRegistrados){
+                context.Seleccionados.Add(seleccionado);
+            }
+            
+            context.SaveChanges();
+        }
+
+        return ganadoresRegistrados;
+    }
 }

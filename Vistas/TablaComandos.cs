@@ -21,6 +21,7 @@ Parametro: []
         tablaComandos.AddRow("SEARCH [NAME Nombre][LAST Apellido][ID Matricula]", "Busca a un estudiante por el criterio especificado.");
         tablaComandos.AddRow("EXIT", "Finaliza del programa.");
         tablaComandos.AddRow("REPORT", "Genera reportes PDF.");
+        tablaComandos.AddRow("TABLE", "Enseña la tabla de participantes.");
 
         string tablaComandosMostrada = tablaComandos.ToStringAlternative();
 
