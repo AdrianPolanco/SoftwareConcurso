@@ -11,7 +11,6 @@ class Buscar
     public void Ejecutar()
     {
         ConsoleTable tablaTitulo = new ConsoleTable("BUSCAR");
-
         Console.WriteLine(tablaTitulo.ToStringAlternative());
 
         Console.Write("Si deseas buscar por Id escribe 'ID', si deses buscar por Matrícula escribe 'MATR': ");

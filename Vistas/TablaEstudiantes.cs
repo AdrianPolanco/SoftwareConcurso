@@ -25,7 +25,6 @@ public partial class OperacionesParticipantes{
                 inactivos.Add(participante);
             }
         }
-
         Console.WriteLine(@"
         SELECTOR ALEATORIO DE PARTICIPANTES
         

@@ -11,6 +11,7 @@ class Registrar
     ControladorCRUD controladorCreate = new ControladorCRUD();
     public void Ejecutar()
     {
+        Console.Clear();
         Console.WriteLine(@"
         ________________________________________________________
        |                REGISTRAR PARTICIPANTE                  |
@@ -32,7 +33,8 @@ class Registrar
             esValida = verificar.VerificarMatricula(matricula);
         }
         Console.Write("Participa(Formato admitido: 1 si participa, cualquier otro numero si no participa):");
-        string participaInicial = Console.ReadLine();
+        string participaInicial = Console.ReadLine(); 
+        Console.Clear();
         bool participa = verificar.VerificarParticipacion(participaInicial);
 
         DatosParticipante participante = new DatosParticipante()
@@ -56,7 +58,7 @@ class Registrar
 
             ");
             Console.WriteLine(tablaRegistroVisible);
-
+            Thread.Sleep(5000); // Pausa de 5 segundos
         }catch(Exception err){
             Console.WriteLine("Algo ha ido mal en el registro.");
         } 

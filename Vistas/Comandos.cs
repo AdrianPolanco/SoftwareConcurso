@@ -17,6 +17,8 @@ class Comandos
         GenerarReporte reporte = new GenerarReporte();    
         Status status = new Status();
         Seleccionar seleccionar = new Seleccionar();
+
+ 
         Console.WriteLine(tablaAyuda.ToStringAlternative());
 
 
@@ -26,7 +28,6 @@ class Comandos
 Introduzca un comando:");
         string comando = Console.ReadLine().ToUpper();
 
-
         switch(comando){
             case "EXIT":
                 Console.WriteLine("Saliendo del programa...");
@@ -34,6 +35,7 @@ Introduzca un comando:");
                 break;
             case "REG":
                 registro.Ejecutar();
+                Console.ReadKey();
                 operacion.LeerParticipantes();
                 Ejecutar();
                 break;
@@ -47,6 +49,7 @@ Introduzca un comando:");
                 }else{
                     Console.WriteLine("Opción inválida, reiniciando programa...."); 
                 }
+                Esperar.Pausa();
                 operacion.LeerParticipantes();
                 Ejecutar();
                 break;
@@ -67,8 +70,10 @@ Introduzca un comando:");
                 break;
             case "SEARCH":
                 buscar.Ejecutar();
+                Console.ReadKey();         
                 operacion.LeerParticipantes();
                 Ejecutar();
+                Console.Clear();
                 break;
             case "UPD":
                 actualizar.Ejecutar();
