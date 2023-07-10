@@ -78,5 +78,13 @@ class ControladorCRUD
 
     /*TODO: Hacer metodo que permita insertar en la tabla RESULTADOS si el estudiante elegido tuvo exito o no, 
     y modificar los reportes y las tablas para que reflejen esos cambios
+
+    Puedo simplemente hacer un metodo que haga el insert, y basado en el ID del segundo seleccionado hacer un insert en la tabla RESULTADOS
     */
+
+    public Resultado InsertarEstado(Resultado estado){
+        return controlador.InsertStatus(estado);
+    }
+
+    
 }

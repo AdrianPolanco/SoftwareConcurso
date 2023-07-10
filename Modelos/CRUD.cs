@@ -214,4 +214,13 @@ class CRUD
 
         return seleccionados;
     }
+
+    public Resultado InsertStatus(Resultado estado){
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            context.Resultados.Add(estado);
+            context.SaveChanges();
+        }
+
+        return estado;
+    }
 }

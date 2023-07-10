@@ -40,6 +40,7 @@ class Seleccionar{
 
             }
             contador -= 1;  
+        
         }
         RetirarGanadores(elegidos);
         List<Seleccionado> seleccionados = controlador.InsertarHistoria(elegidos);
@@ -53,10 +54,26 @@ class Seleccionar{
         Console.WriteLine(@"Estos son los ganadores del sorteo y ya han sido agregados al historial de ganadores:
          ");
         Console.WriteLine(tablaMostrada);
+
         Console.ReadKey();
+        Resultado resultado = new Resultado(){IdSeleccionado = seleccionados[1].Id};
+        Console.Write(@$"¿Fue capaz {seleccionados[1].Nombre} {seleccionados[1].Apellido} de matrícula {seleccionados[1].Matricula}
+        capaz de hacer el programa que se le ha solicitado? Escriba SI si lo fue o cualquier otro valor si no lo fue: ");
+        string respuesta = Console.ReadLine().ToUpper();
+        if(respuesta == "SÍ"){
+            respuesta = "SI";
+        }
+
+        if(respuesta == "SI"){
+            resultado.Exito = true;
+        }else{
+            resultado.Exito = false;
+        }
+
+        //controlador
         
         }else{
-            Console.WriteLine("ERROR: No hay suficientes participantes para hacer la selección, pruebe agregando más vía registro o inclusión");;
+            Console.WriteLine("ERROR: No hay suficientes participantes para hacer la selección, pruebe agregando más vía registro, bloc de notas o inclusión");;
         }
         
      }
