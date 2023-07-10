@@ -5,7 +5,6 @@ using ConsoleTables;
 namespace Vistas;
 
 public partial class OperacionesParticipantes{
-   List<DatosParticipante> elegidos = new List<DatosParticipante>();
 
     ControladorCRUD main = new ControladorCRUD();
 
@@ -13,11 +12,12 @@ public partial class OperacionesParticipantes{
         private List<DatosParticipante> datos = new List<DatosParticipante>();
         private List<DatosParticipante> activos = new List<DatosParticipante>();
         private List<DatosParticipante> inactivos = new List<DatosParticipante>();
+        private List<Seleccionado> elegidos = new List<Seleccionado>();
         
         
     public void LeerParticipantes(){
         datos = main.ObtenerDatos();
-
+        elegidos = main.LeerHistorialSeleccionados();
         foreach(DatosParticipante participante in datos){
             if((bool)participante.Participa){
                 activos.Add(participante);
@@ -32,6 +32,7 @@ public partial class OperacionesParticipantes{
         ");
         ConsoleTable tablaParticipantes = new ConsoleTable("Id","Nombre", "Apellido", "Participa", "Matrícula");
         ConsoleTable tablaInactiva = new ConsoleTable("Id","Nombre", "Apellido", "Participa", "Matrícula");
+        ConsoleTable tablaElegidos = new ConsoleTable("Id","Nombre", "Apellido",  "Matrícula", "Rol", "Fecha");
 
         foreach(DatosParticipante participante in activos){
             tablaParticipantes.AddRow(participante.IdDatosParticipante, participante.Nombre, participante.Apellido, "Sí", participante.Matricula);
@@ -41,14 +42,24 @@ public partial class OperacionesParticipantes{
             tablaInactiva.AddRow(participante.IdDatosParticipante, participante.Nombre, participante.Apellido, "No", participante.Matricula);
         }
 
+        foreach(Seleccionado elegido in elegidos){
+            tablaElegidos.AddRow(elegido.Id, elegido.Nombre, elegido.Apellido, elegido.Matricula, elegido.Rol, elegido.Fecha);
+        }
+
         string tablaMostradaActivos = tablaParticipantes.ToStringAlternative();
         string tablaMostradaInactivos = tablaInactiva.ToStringAlternative();
+        string tablaMostradaElegidos = tablaElegidos.ToStringAlternative();
 
         Console.WriteLine(tablaMostradaActivos);
         Console.WriteLine(@"
             PARTICIPANTES INACTIVOS
         ");
         Console.WriteLine(tablaMostradaInactivos);
+
+        Console.WriteLine(@"
+            HISTORIAL DE PARTICIPANTES SELECCIONADOS
+        ");
+        Console.WriteLine(tablaMostradaElegidos);
 
     }
 

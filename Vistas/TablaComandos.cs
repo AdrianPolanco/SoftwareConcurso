@@ -22,6 +22,7 @@ Parametro: []
         tablaComandos.AddRow("EXIT", "Finaliza del programa.");
         tablaComandos.AddRow("REPORT", "Genera reportes PDF.");
         tablaComandos.AddRow("TABLE", "Enseña la tabla de participantes.");
+        tablaComandos.AddRow("TXT", "Abre el archivo TXT para poder registrar varios estudiantes.");
 
         string tablaComandosMostrada = tablaComandos.ToStringAlternative();
 

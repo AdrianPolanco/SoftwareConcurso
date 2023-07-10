@@ -22,6 +22,27 @@ class Verificar
         }
     }
 
+    public bool EsNombre(string palabra)
+{
+    // Verificar si la palabra contiene solo letras y/o espacios
+    foreach (char c in palabra)
+    {
+        if (!char.IsLetter(c) && !char.IsWhiteSpace(c))
+        {
+            return false;
+        }
+    }
+
+    // Verificar si la palabra no está vacía y no es solo un espacio en blanco
+    if (string.IsNullOrWhiteSpace(palabra))
+    {
+        return false;
+    }
+
+    // Si pasó todas las verificaciones anteriores, considerar que es un nombre
+    return true;
+}
+
     public bool VerificarParticipacion(string opcion)
     {
         int numero;

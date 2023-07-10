@@ -17,6 +17,7 @@ class Comandos
         GenerarReporte reporte = new GenerarReporte();    
         Status status = new Status();
         Seleccionar seleccionar = new Seleccionar();
+        BlocNotas bloc = new BlocNotas();
 
  
         Console.WriteLine(tablaAyuda.ToStringAlternative());
@@ -87,6 +88,11 @@ Introduzca un comando:");
                 break;
             case "GO":
                 seleccionar.SeleccionarGanadores();
+                operacion.LeerParticipantes();
+                Ejecutar();
+                break;
+            case "TXT":
+                bloc.Ejecutar();
                 operacion.LeerParticipantes();
                 Ejecutar();
                 break;
