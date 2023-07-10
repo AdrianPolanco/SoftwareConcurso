@@ -1,9 +1,11 @@
 using System.Diagnostics;
 using Controladores;
+using Vistas;
 using SelectorAleatorioDefinitivo.Modelos;
 
 class ArchivoTXT {
     Verificar verificar = new Verificar();
+    Principal main = new Principal();
     ControladorCRUD controlador = new ControladorCRUD();
     string RutaArchivo = "../ArchivoTXT/archivo.txt";
     public DatosParticipante LeerLinea(string linea){
@@ -96,7 +98,7 @@ class ArchivoTXT {
         procesoBlocNotas.EnableRaisingEvents = true;
         procesoBlocNotas.Exited += (sender, e) =>
         {
-            Environment.Exit(0);
+            main.Ejecutar();
         };
     }
 
