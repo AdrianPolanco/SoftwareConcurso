@@ -17,9 +17,12 @@ public partial class ConcursoDbContext : DbContext
 
     public virtual DbSet<DatosParticipante> DatosParticipantes { get; set; }
 
+    public virtual DbSet<Resultado> Resultados { get; set; }
+
     public virtual DbSet<Seleccionado> Seleccionados { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=DESKTOP-SU18V4P\\SQLEXPRESS;Initial Catalog=CONCURSO_DB;Persist Security Info=True;TrustServerCertificate=true;User ID=sa;Password=06112001;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -42,6 +45,20 @@ public partial class ConcursoDbContext : DbContext
             entity.Property(e => e.Nombre)
                 .HasMaxLength(30)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<Resultado>(entity =>
+        {
+            entity.HasKey(e => e.IdSeleccionado).HasName("PK__RESULTAD__2C3C0DB92D81EB0C");
+
+            entity.ToTable("RESULTADOS");
+
+            entity.Property(e => e.IdSeleccionado).ValueGeneratedNever();
+
+            entity.HasOne(d => d.IdSeleccionadoNavigation).WithOne(p => p.Resultado)
+                .HasForeignKey<Resultado>(d => d.IdSeleccionado)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("IdSeleccionado_R");
         });
 
         modelBuilder.Entity<Seleccionado>(entity =>

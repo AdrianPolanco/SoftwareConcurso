@@ -53,6 +53,8 @@ class Seleccionar{
         Console.WriteLine(@"Estos son los ganadores del sorteo y ya han sido agregados al historial de ganadores:
          ");
         Console.WriteLine(tablaMostrada);
+        Console.ReadKey();
+        
         }else{
             Console.WriteLine("ERROR: No hay suficientes participantes para hacer la selección, pruebe agregando más vía registro o inclusión");;
         }

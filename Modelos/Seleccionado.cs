@@ -16,4 +16,6 @@ public partial class Seleccionado
     public string? Rol { get; set; }
 
     public DateTime? Fecha { get; set; }
+
+    public virtual Resultado? Resultado { get; set; }
 }

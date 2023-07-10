@@ -75,4 +75,8 @@ class ControladorCRUD
     public List<Seleccionado> LeerHistorialSeleccionados(){
         return controlador.ReadSelectedHistory();
     }
+
+    /*TODO: Hacer metodo que permita insertar en la tabla RESULTADOS si el estudiante elegido tuvo exito o no, 
+    y modificar los reportes y las tablas para que reflejen esos cambios
+    */
 }

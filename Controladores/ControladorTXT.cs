@@ -6,8 +6,8 @@ using SelectorAleatorioDefinitivo.Modelos;
 class ArchivoTXT {
     Verificar verificar = new Verificar();
     Principal main = new Principal();
-    ControladorCRUD controlador = new ControladorCRUD();
-    string RutaArchivo = "../ArchivoTXT/archivo.txt";
+    ControladorCRUD controlador = new ControladorCRUD(); 
+    string RutaCompleta = Path.Combine(Directory.GetCurrentDirectory(), "ArchivoTXT", "archivo.txt");
     public DatosParticipante LeerLinea(string linea){
 
         DatosParticipante defaultPersona = new DatosParticipante();
@@ -63,7 +63,7 @@ class ArchivoTXT {
         List<DatosParticipante> estudiantes = new List<DatosParticipante>();
         
         
-        using(StreamReader reader = new StreamReader(RutaArchivo)){
+        using(StreamReader reader = new StreamReader(Path.GetFullPath(RutaCompleta))){
             string linea;
 
             while((linea = reader.ReadLine()) != null){
@@ -79,7 +79,7 @@ class ArchivoTXT {
         List<DatosParticipante> archivo = new List<DatosParticipante>();
         archivo = LeerArchivo();
         try{
-            File.WriteAllText(RutaArchivo, string.Empty);
+            File.WriteAllText(RutaCompleta, string.Empty);
             foreach(DatosParticipante estudiante in archivo){
                 controlador.CrearDatos(estudiante);
             }  
@@ -91,13 +91,16 @@ class ArchivoTXT {
     }
 
     public void AbrirArchivo(){
-        string RutaCompleta = Path.Combine(Directory.GetCurrentDirectory(), "ArchivoTXT", "archivo.txt");
+
         string BlocExe = "notepad.exe";
         ProcessStartInfo startInfo = new ProcessStartInfo{FileName = BlocExe, Arguments = RutaCompleta, UseShellExecute = true};
         Process procesoBlocNotas = Process.Start(startInfo);
         procesoBlocNotas.EnableRaisingEvents = true;
         procesoBlocNotas.Exited += (sender, e) =>
         {
+            if(InsertarEstudiantes()){
+                Console.WriteLine("Insercion de datos exitosa");
+            }
             main.Ejecutar();
         };
     }
