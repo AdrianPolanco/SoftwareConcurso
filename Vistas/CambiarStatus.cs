@@ -16,10 +16,16 @@ class Status{
             tabla.AddRow(participante.IdDatosParticipante, participante.Nombre, participante.Apellido, participante.Matricula,
              (bool) participante.Participa? "Sí": "No");
             string tablaMostrar = tabla.ToStringAlternative();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Estado del participante cambiado con exito: ");
             Console.WriteLine(tablaMostrar);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" ");
+            Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
         }else{
             Console.WriteLine("Parametro no existente");
+            Console.WriteLine(" ");
+            Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
         }
     }
 
@@ -35,10 +41,42 @@ class Status{
             tabla.AddRow(participante.IdDatosParticipante, participante.Nombre, participante.Apellido, participante.Matricula,
              (bool) participante.Participa? "Sí": "No");
             string tablaMostrar = tabla.ToStringAlternative();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Estado del participante cambiado con exito: ");
             Console.WriteLine(tablaMostrar);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" ");
+            Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
         }else{
             Console.WriteLine("ERROR: Parametro no existente en la base de datos. Verifica el formato de la matrícula o si esta matrícula esta registrada.");
+            Console.WriteLine(" ");
+            Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
         }
+    }
+
+    public void CambiarMuchosEstados(){
+        Console.Write("Introduce los ID de LOS ESTUDIANTES a los que quieres cambiar el estado: ");
+        string[] estudiantes = Console.ReadLine().Split(" ");
+        int contador = 0;
+        foreach(string estudiante in estudiantes){
+            int num;
+            bool convertido = int.TryParse(estudiante, out num);
+
+            if(convertido){
+                contador += 1;
+            }
+        }
+        if(contador == estudiantes.Length){
+            controlador.CambiarMuchosStatus(estudiantes);
+            Console.WriteLine("Todos los estudiantes han sido cambiados de estado.");
+            Console.WriteLine(" ");
+            Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
+        }else{
+            Console.WriteLine("ERROR: Uno de los ID que introduciste NO es válido, solo se admiten números.");
+            Console.WriteLine(" ");
+            Console.Write("Presione 'ENTER' para volver a intentarlo: ");
+            Console.ReadKey();
+        }
+
     }
 }

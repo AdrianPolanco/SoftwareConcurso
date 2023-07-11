@@ -50,6 +50,12 @@ class ControladorCRUD
         return controlador.ChangeStatusById(idDef);
     }
 
+    public void CambiarMuchosStatus(string[] participantes){
+        foreach(string id in participantes){
+            CambiarStatusPorId(id);
+        }
+    }
+
     public DatosParticipante CambiarStatusPorMatricula(string matricula){
         return controlador.ChangeStatusByTuition(matricula);
     }
@@ -58,6 +64,12 @@ class ControladorCRUD
         int idDef;
         bool convertir = int.TryParse(id, out idDef);
         return controlador.DeleteById(idDef);
+    }
+
+    public void EliminarMuchosEstudiantes(string[] participantes){
+        foreach(string id in participantes){
+            EliminarEstudiantePorId(id);
+        }
     }
 
     public DatosParticipante EliminarEstudiantePorMatricula(string matricula){
@@ -74,6 +86,10 @@ class ControladorCRUD
 
     public List<Seleccionado> LeerHistorialSeleccionados(){
         return controlador.ReadSelectedHistory();
+    }
+
+    public List<Resultado> LeerDesarrolladoresSeleccionados(){
+        return controlador.ReadSelectedDevelopers();
     }
 
     /*TODO: Hacer metodo que permita insertar en la tabla RESULTADOS si el estudiante elegido tuvo exito o no, 

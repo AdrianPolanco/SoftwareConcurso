@@ -291,4 +291,158 @@ class Plantilla{
 
     return tablaHtml;
     }
+
+     public string CrearDesarrolladores(List<Seleccionado> seleccionados, List<Resultado> resultados){
+
+        string tablaHtml = @$"<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Reporte</title>
+    <link rel='stylesheet' href='output.css'/>
+   <link rel='stylesheet' href='styles.css'/>
+</head>
+<body class='p-10'>
+    <header class='h-24 flex flex-col gap-5 justify-center items-center'>
+        <div class='flex gap-2 items-center justify-center'>
+          
+        <svg version='1.0' xmlns='http://www.w3.org/2000/svg'
+        width='40.000000pt' height='40.000000pt' viewBox='0 0 256.000000 256.000000'
+        preserveAspectRatio='xMidYMid meet'>
+       
+       <g transform='translate(0.000000,256.000000) scale(0.100000,-0.100000)'
+       fill='#A7F3D0' stroke='#A7F3D0'>
+       <path d='M1146 2385 c-144 -37 -253 -118 -353 -264 -1 -2 -25 16 -51 42 -213
+       198 -561 136 -692 -123 -114 -225 -21 -495 207 -603 64 -30 74 -32 183 -32
+       109 0 119 2 182 32 37 17 91 53 119 80 33 30 54 43 56 35 9 -25 82 -110 125
+       -144 57 -46 123 -83 176 -99 l42 -12 0 -361 0 -360 -113 111 c-89 88 -120 113
+       -149 118 -78 15 -136 -17 -164 -90 -29 -78 -14 -102 219 -332 161 -160 210
+       -203 242 -213 28 -8 143 -10 386 -8 l346 3 48 30 c35 21 56 45 74 80 25 48 26
+       54 26 255 0 187 -2 208 -20 239 -30 51 -79 74 -142 67 -49 -6 -53 -5 -53 15 0
+       35 -37 86 -77 104 -26 13 -50 16 -85 12 -46 -6 -48 -5 -48 19 0 83 -100 153
+       -180 126 l-30 -11 0 100 c0 82 3 99 15 99 29 0 140 57 192 99 50 39 126 125
+       136 153 3 8 20 -3 48 -30 24 -24 77 -60 117 -79 62 -31 86 -37 158 -41 223
+       -12 403 117 460 330 38 145 -10 315 -120 423 -137 133 -344 163 -517 75 -19
+       -10 -59 -40 -88 -66 -47 -43 -54 -46 -63 -30 -52 92 -186 199 -298 236 -84 29
+       -231 36 -314 15z m259 -70 c174 -46 319 -198 356 -373 25 -121 -3 -271 -70
+       -370 l-29 -44 -10 32 c-19 52 -69 107 -124 134 -51 25 -57 26 -248 26 -191 0
+       -197 -1 -248 -26 -54 -27 -101 -77 -124 -132 l-13 -32 -23 35 c-69 100 -98
+       254 -72 378 35 172 181 325 351 371 72 19 181 20 254 1z m-803 -143 c34 -17
+       83 -51 107 -76 l44 -45 -16 -70 c-21 -87 -22 -196 -1 -278 18 -74 14 -101 -9
+       -57 -23 45 -80 91 -129 104 -25 7 -97 10 -177 8 -127 -3 -139 -5 -183 -31 -27
+       -16 -57 -44 -71 -67 -28 -47 -33 -44 -67 35 -68 157 -9 354 134 452 70 48 127
+       63 223 60 67 -3 92 -9 145 -35z m1623 24 c67 -21 149 -78 190 -134 41 -56 75
+       -155 75 -221 0 -56 -24 -143 -52 -189 l-21 -33 -24 40 c-14 24 -44 52 -71 68
+       -44 26 -56 28 -183 31 -80 2 -152 -1 -177 -8 -49 -13 -106 -59 -129 -104 -23
+       -44 -27 -17 -9 57 21 82 20 191 -1 278 l-16 70 44 45 c96 99 244 139 374 100z
+       m-1632 -520 c43 -18 75 -55 83 -93 6 -30 3 -34 -41 -62 -102 -65 -247 -69
+       -362 -10 -63 32 -68 37 -65 64 4 39 34 79 74 98 43 22 263 24 311 3z m1683 -2
+       c41 -20 71 -59 76 -99 3 -27 -2 -32 -65 -64 -115 -59 -260 -55 -362 10 -44 28
+       -47 32 -41 62 8 37 40 75 81 93 46 20 267 19 311 -2z m-776 -44 c45 -23 86
+       -78 96 -129 6 -28 3 -37 -17 -53 -28 -22 -104 -62 -136 -72 -21 -7 -23 -4 -23
+       24 0 73 -65 140 -137 140 -81 0 -143 -60 -143 -140 0 -28 -2 -31 -22 -24 -33
+       10 -109 50 -137 72 -20 16 -23 25 -17 54 9 50 45 99 91 125 37 21 52 23 223
+       23 164 0 187 -2 222 -20z m-170 -180 c19 -19 20 -33 20 -254 0 -201 2 -235 16
+       -247 22 -18 46 -1 56 39 9 33 41 62 69 62 9 0 28 -9 43 -21 25 -19 26 -25 26
+       -112 0 -102 7 -120 41 -115 16 2 25 12 31 35 15 59 79 82 118 43 17 -17 20
+       -33 20 -98 0 -85 13 -117 46 -110 11 2 23 17 30 38 15 45 52 68 91 55 49 -18
+       54 -42 51 -245 -3 -208 -11 -236 -78 -271 -32 -17 -62 -19 -363 -19 -259 0
+       -334 3 -360 14 -18 8 -117 100 -221 204 -167 168 -189 194 -189 223 0 21 7 38
+       22 51 47 37 65 27 216 -122 139 -138 175 -162 189 -124 3 9 6 227 6 485 0 456
+       1 470 20 489 11 11 33 20 50 20 17 0 39 -9 50 -20z'/>
+       <path d='M1196 2187 c-25 -14 -49 -39 -64 -67 -20 -39 -23 -55 -19 -118 5 -81
+       20 -111 77 -149 73 -50 164 -34 223 39 26 32 31 48 34 110 4 63 1 79 -19 118
+       -31 56 -85 90 -148 90 -28 0 -60 -9 -84 -23z m147 -71 c32 -30 41 -63 34 -123
+       -7 -62 -42 -98 -97 -98 -57 0 -91 37 -98 104 -8 89 28 141 99 141 24 0 45 -8
+       62 -24z'/>
+       <path d='M411 2129 c-125 -26 -147 -234 -31 -294 63 -33 148 -7 182 56 22 41
+       24 129 3 169 -29 55 -89 82 -154 69z m73 -80 c22 -17 26 -28 26 -70 0 -58 -24
+       -89 -68 -89 -94 0 -89 174 4 179 6 1 23 -8 38 -20z'/>
+       <path d='M2090 2132 c-34 -5 -77 -38 -95 -72 -8 -16 -15 -55 -15 -87 0 -104
+       57 -160 154 -150 64 6 110 51 119 118 17 117 -59 207 -163 191z m54 -73 c70
+       -32 49 -169 -26 -169 -44 0 -68 31 -68 89 0 42 4 53 26 70 31 24 35 25 68 10z'/>
+       </g>
+       </svg>
+       <h1 class='text-4xl'><span class='gradient-text' style='background-color: linear-gradient(180deg,  #74fff3, #A7F3D0);-webkit-background-clip: text;-webkit-text-fill-color: transparent;'>Surprise Picker</span></h1>
+    </div>
+     <div class='flex gap-2 right-20 absolute'>
+            <h3>Fecha: </h3>
+            <p> {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}</p>
+        </div>        
+    <h2 class='text-2xl'>Historial de seleccionados</h2> 
+    </header>
+
+    <div class='container mx-auto py-8 max-w-4xl mt-20'>
+    <table class='table-auto w-full border-collapse'>
+          <thead>
+            <tr class='max-w-4xl'>
+                <h2 class='text-xl font-sans italic border border-black p-2 text-center'  style='background-color: #4F46E5;'>DESARROLLADORES SELECCIONADOS</h2>
+            </tr>
+            <tr>
+              
+              <th class='bg-green-200 border-black border italic' style='background-color: #4F46E5;'>Nombre</th>
+              <th class='bg-green-200 border-black border italic' style='background-color: #4F46E5;'>Apellido</th>
+              <th class='bg-green-200 border-black border italic' style='background-color: #4F46E5;'>Matrícula</th>
+              <th class='bg-green-200 border-black border italic' style='background-color: #4F46E5;'>Exito</th>
+              <th class='bg-green-200 border-black border italic' style='background-color: #4F46E5;'>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>";
+        int contadorExitoso = 0;
+        int contadorFracasado = 0;
+        int contadorDesarrolladores = 0;
+        foreach(Seleccionado seleccionado in seleccionados){
+          if(seleccionado.Rol == "Desarrollador en vivo"){
+              foreach(Resultado resultado in resultados){
+                if(resultado.IdSeleccionado == seleccionado.Id){
+                  tablaHtml += @$"<tr> 
+                                    <td class='border border-black text-center'>{seleccionado.Nombre}</td>
+                                    <td class='border border-black text-center'>{seleccionado.Apellido}</td>
+                                    <td class='border border-black text-center'>{seleccionado.Matricula}</td>
+                                    <td class='border border-black text-center'>{((bool)resultado.Exito? "Sí" : "No")}</td>
+                                    <td class='border border-black text-center'>{seleccionado.Fecha}</td>     
+                                  </tr>";
+                  contadorDesarrolladores += 1;
+                  if((bool)resultado.Exito){
+                    contadorExitoso += 1;
+                  }else{
+                    contadorFracasado += 1;
+                  }
+                }
+              }
+              
+          }
+
+        }
+
+        tablaHtml += @$"</tbody>
+        </table>
+    </div>";
+        tablaHtml += @$"
+        
+            <div class='container mx-auto py-8 max-w-xs absolute right-80 mt-16'>
+            <table class='table-auto w-full border-collapse'>
+              <tbody>
+                <tr>
+                  <td class='text-center'>Selecciones exitosas:</td>
+                  <td class='text-center'>{contadorExitoso}</td>
+                  
+                </tr>
+                <tr class='pb-5'>
+                  <td class='text-center p-2'>Selecciones fracasadas:</td>
+                  <td class='text-center p-2'>{contadorFracasado}</td>
+                </tr>
+                <tr>
+                    <td class='text-center border-t border-black'>Total de selecciones de desarrolladores</td>
+                    <td class='text-center border-t border-black'>{contadorDesarrolladores}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+</body>
+</html>";
+
+    return tablaHtml;
+    }
 }

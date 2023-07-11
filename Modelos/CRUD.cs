@@ -150,7 +150,7 @@ class CRUD
 
         return registro;
     } 
-       public DatosParticipante ChangeStatusById(int id){
+    public DatosParticipante ChangeStatusById(int id){
         DatosParticipante participante;
         using(ConcursoDbContext context = new ConcursoDbContext()){
             participante = context.DatosParticipantes.Single(dp => dp.IdDatosParticipante == id);
@@ -213,6 +213,17 @@ class CRUD
         }
 
         return seleccionados;
+    }
+
+    public List<Resultado> ReadSelectedDevelopers(){
+        List<Resultado> resultados = new List<Resultado>();
+        using(ConcursoDbContext context = new ConcursoDbContext()){
+            foreach(Resultado resultado in context.Resultados.ToList()){
+                resultados.Add(resultado);
+            }
+        }
+        
+        return resultados;
     }
 
     public Resultado InsertStatus(Resultado estado){

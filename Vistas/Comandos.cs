@@ -29,45 +29,26 @@ class Comandos
 Introduzca un comando:");
         string comando = Console.ReadLine().ToUpper();
 
-        switch(comando){
-            case "EXIT":
-                Console.WriteLine("Saliendo del programa...");
-                Environment.Exit(0);
-                break;
+        switch(comando){            
+            case "GO":
+                seleccionar.SeleccionarGanadores();
+                Console.ReadKey();
+                operacion.LeerParticipantes();
+                Ejecutar();
+                Console.Clear();
+                break; 
             case "REG":
                 registro.Ejecutar();
                 Console.ReadKey();
                 operacion.LeerParticipantes();
                 Ejecutar();
+                Console.Clear();
                 break;
-            case "CHANGE STATUS":
-                Console.Write("Introduzca 'ID' si desea buscar por ID o 'MATR' si desea buscar por matricula: ");
-                string opcion = Console.ReadLine().ToUpper();
-                if(opcion == "ID"){         
-                    status.CambiarEstadoPorId();
-                }else if(opcion == "MATR"){
-                    status.CambiarEstadoPorMatricula();
-                }else{
-                    Console.WriteLine("Opción inválida, reiniciando programa...."); 
-                }
-                Esperar.Pausa();
+            case "TXT":
+                bloc.Ejecutar();
                 operacion.LeerParticipantes();
                 Ejecutar();
-                break;
-            case "REPORT":
-                reporte.CrearDocumento();
-                operacion.LeerParticipantes();
-                Ejecutar();
-                break;
-            case "REPORT SELECTED":
-                reporte.CrearDocumentoSeleccionados();
-                operacion.LeerParticipantes();
-                Ejecutar();
-                break;
-            case "HELP":
-                tabla.EjecutarTabla();
-                operacion.LeerParticipantes();
-                Ejecutar();
+                Console.Clear();
                 break;
             case "SEARCH":
                 buscar.Ejecutar();
@@ -75,31 +56,85 @@ Introduzca un comando:");
                 operacion.LeerParticipantes();
                 Ejecutar();
                 Console.Clear();
-                break;
+                break;   
+            case "CHANGE STATUS":
+                Console.Write(@"Introduzca 'ID' si desea cambiar estados por ID, 'MATR' si desea cambiar estados por matricula
+                o 'MANY' si desea cambiar varios estados por ID: ");
+                string opcion = Console.ReadLine().ToUpper();
+                if(opcion == "ID"){         
+                    status.CambiarEstadoPorId();
+                }else if(opcion == "MATR"){
+                    status.CambiarEstadoPorMatricula();
+                }else if(opcion == "MANY"){
+                    status.CambiarMuchosEstados();
+                }else{
+                    Console.WriteLine("Opción inválida, reiniciando programa...."); 
+                }
+                Console.ReadKey();
+                operacion.LeerParticipantes();
+                Ejecutar();
+                Console.Clear();
+                break;       
             case "UPD":
                 actualizar.Ejecutar();
+                Console.ReadKey();
                 operacion.LeerParticipantes();
                 Ejecutar();
-                break;
+                Console.Clear();
+                break;  
             case "DEL":
                 eliminar.Ejecutar();
+                Console.ReadKey();
                 operacion.LeerParticipantes();
                 Ejecutar();
+                Console.Clear();
+                break;                                                     
+            case "SELECTED":
+                operacion.LeerSeleccionadosGeneral();
+                Console.ReadKey();
+                operacion.LeerParticipantes();
+                Ejecutar();
+                Console.Clear();
+                break;            
+            case "REPORT":
+                reporte.CrearDocumento();
+                operacion.LeerParticipantes();
+                Ejecutar();
+                Console.Clear();
                 break;
-            case "GO":
-                seleccionar.SeleccionarGanadores();
+            case "REPORT SELECTED":
+                reporte.CrearDocumentoSeleccionados();
                 operacion.LeerParticipantes();
                 Ejecutar();
+                Console.Clear();
                 break;
-            case "TXT":
-                bloc.Ejecutar();
+            case "REPORT DEVELOPERS":
+                reporte.CrearDocumentoDesarrolladores();
                 operacion.LeerParticipantes();
                 Ejecutar();
+                Console.Clear();
+                break;   
+            case "EXIT":
+                Console.WriteLine("Saliendo del programa...");
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.Clear();
+                Environment.Exit(0);
+                break;                         
+            case "HELP":
+                tabla.EjecutarTabla();
+                Console.ReadKey();
+                operacion.LeerParticipantes();
+                Ejecutar();
+                Console.Clear();
                 break;
             default:
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("ERROR: Comando no reconocido. Reiniciando programa...");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.ReadKey();
                 operacion.LeerParticipantes();
                 principal.Ejecutar();
+                Console.Clear();
                 break;
         }
     }

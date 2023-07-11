@@ -5,10 +5,21 @@ using SelectorAleatorioDefinitivo.Modelos;
 class Actualizar{
     Verificar verificar = new Verificar();
     ControladorCRUD controlador = new ControladorCRUD();
-    ConsoleTable tablaTitulo = new ConsoleTable("ACTUALIZAR");
+
     public void Ejecutar(){
 
-        Console.WriteLine(tablaTitulo.ToStringAlternative());
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.WriteLine(@"
+  ___   _____  _____  _   _   ___   _      _____  ______  ___  ______ 
+ / _ \ /  __ \|_   _|| | | | / _ \ | |    |_   _||___  / / _ \ | ___ \
+/ /_\ \| /  \/  | |  | | | |/ /_\ \| |      | |     / / / /_\ \| |_/ /
+|  _  || |      | |  | | | ||  _  || |      | |    / /  |  _  ||    / 
+| | | || \__/\  | |  | |_| || | | || |____ _| |_ ./ /___| | | || |\ \ 
+\_| |_/ \____/  \_/   \___/ \_| |_/\_____/ \___/ \_____/\_| |_/\_| \_|
+                                                                      
+                                                                      
+");
+        Console.ForegroundColor = ConsoleColor.White;
 
         Console.Write("Si deseas actualizar Id escribe 'ID', si deses actualizar por Matrícula escribe 'MATR': ");
         string valor = Console.ReadLine().ToUpper();
@@ -22,7 +33,12 @@ class Actualizar{
                 ActualizarParticipante("MATR");
                 break;
             default:
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("Parametro inválido");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(" ");
+                Console.Write("Presione 'ENTER' para volver a intentarlo: ");
+                Console.ReadKey();
                 Ejecutar();
                 break;
         }
@@ -50,14 +66,24 @@ class Actualizar{
                 string matricula = Console.ReadLine();
                 resultados = controlador.ActualizarPorId(id, nombre, apellido, matricula);
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(@"
                 DATOS ACTUALIZADOS CON EXITO
                 ");
                 ConsoleTable tablaActualizada = new ConsoleTable("ID", "Nombre", "Apellido", "Matricula");
                 tablaActualizada.AddRow(resultados.IdDatosParticipante, resultados.Nombre, resultados.Apellido, resultados.Matricula);
                 Console.WriteLine(tablaActualizada.ToStringAlternative());
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(" ");
+                Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
+                Console.ReadKey();
             }else{
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("No se encontro el estudiante solicitado.");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(" ");
+                Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
+                Console.ReadKey();
             }
             
         }else if(config == "MATR"){
@@ -77,19 +103,30 @@ class Actualizar{
                 Console.Write("Matrícula: ");
                 string matricula = Console.ReadLine();
                 resultados = controlador.ActualizarPorMatricula(matriculaParametro, nombre, apellido, matricula);
-
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(@"
                 DATOS ACTUALIZADOS CON EXITO
                 ");
                 ConsoleTable tablaActualizada = new ConsoleTable("ID", "Nombre", "Apellido", "Matricula");
                 tablaActualizada.AddRow(resultados.IdDatosParticipante, resultados.Nombre, resultados.Apellido, resultados.Matricula);
                 Console.WriteLine(tablaActualizada.ToStringAlternative());
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(" ");
+                Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
+                Console.ReadKey();
                 }else{
+                    Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"No se encontraron resultados, la matricula {matriculaParametro} no pertenece a ningún estudiante registrado.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(" ");
+                    Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
+                    Console.ReadKey();
                 }
                 
             }else{
+                Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine(@"ERROR: Formato incorrecto, no se admiten cadenas que no tengan 9 caracteres, el formato de este campo es, ejemplo: 2023-5487");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             
         }

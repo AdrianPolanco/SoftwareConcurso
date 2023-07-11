@@ -8,27 +8,41 @@ class Tabla{
     public void EjecutarTabla(){
         ConsoleTable tablaComandos = new ConsoleTable("COMANDO", "FUNCIONALIDAD");
 
+
+        tablaComandos.AddRow("GO", "Ejecuta la selección aleatoria.");
+        tablaComandos.AddRow("REG", "Registra a un estudiante.");
+        tablaComandos.AddRow("TXT", "Abre el archivo TXT para poder registrar varios estudiantes.");
+        tablaComandos.AddRow("SEARCH", "Busca a un estudiante por el criterio especificado.");
+        tablaComandos.AddRow("CHANGE STATUS", "Cambia el status del estudiante especificado, pasandolo a 'Activo' si esta en estado 'Inactivo' y viceversa");
+        tablaComandos.AddRow("UPD", "Actualiza el Nombre, Apellido o la Matrícula del estudiante.");
+        tablaComandos.AddRow("DEL", "Elimina a un estudiante, sea o no inactivo.");
+        tablaComandos.AddRow("SELECTED", "Imprime en pantalla todos los estudiantes seleccionados, independientemente de su rol.");
+        tablaComandos.AddRow("REPORT", "Genera reportes de todos los estudiantes en formato PDF.");
+        tablaComandos.AddRow("REPORT SELECTED", "Genera reportes de todos los estudiantes seleccionados en formato PDF.");
+        tablaComandos.AddRow("REPORT DEVELOPERS", "Genera reportes de todos los estudiantes seleccionados en el rol de 'Desarrollador en vivo' en formato PDF, en el que consta si tuvieron exito o no.");       
+        tablaComandos.AddRow("EXIT", "Finaliza del programa.");
+        string tablaComandosMostrada = tablaComandos.ToStringAlternative();        
+        Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(@"
-Simbología: || = O
-Parametro: []
+
+ .----------------.  .----------------.  .----------------.  .----------------.  .-----------------. .----------------.  .----------------.  .----------------. 
+| .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
+| |     ______   | || |     ____     | || | ____    ____ | || |      __      | || | ____  _____  | || |  ________    | || |     ____     | || |    _______   | |
+| |   .' ___  |  | || |   .'    `.   | || ||_   \  /   _|| || |     /  \     | || ||_   \|_   _| | || | |_   ___ `.  | || |   .'    `.   | || |   /  ___  |  | |
+| |  / .'   \_|  | || |  /  .--.  \  | || |  |   \/   |  | || |    / /\ \    | || |  |   \ | |   | || |   | |   `. \ | || |  /  .--.  \  | || |  |  (__ \_|  | |
+| |  | |         | || |  | |    | |  | || |  | |\  /| |  | || |   / ____ \   | || |  | |\ \| |   | || |   | |    | | | || |  | |    | |  | || |   '.___`-.   | |
+| |  \ `.___.'\  | || |  \  `--'  /  | || | _| |_\/_| |_ | || | _/ /    \ \_ | || | _| |_\   |_  | || |  _| |___.' / | || |  \  `--'  /  | || |  |`\____) |  | |
+| |   `._____.'  | || |   `.____.'   | || ||_____||_____|| || ||____|  |____|| || ||_____|\____| | || | |________.'  | || |   `.____.'   | || |  |_______.'  | |
+| |              | || |              | || |              | || |              | || |              | || |              | || |              | || |              | |
+| '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
+ '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
 
         ");
-        tablaComandos.AddRow("CHANGE STATUS", "Excluye o incluye en la selección a un participante, dependiendo de su estado actual de participacion");
-        tablaComandos.AddRow("DEL", "Elimina a un estudiante, sea o no inactivo.");
-        tablaComandos.AddRow("UPD", "Actualiza el Nombre, Apellido o la Matrícula del estudiante.");
-        tablaComandos.AddRow("REG", "Registra a un estudiante.");
-        tablaComandos.AddRow("GO", "Ejecuta la selección aleatoria.");
-        tablaComandos.AddRow("SEARCH [NAME Nombre][LAST Apellido][ID Matricula]", "Busca a un estudiante por el criterio especificado.");
-        tablaComandos.AddRow("EXIT", "Finaliza del programa.");
-        tablaComandos.AddRow("REPORT", "Genera reportes PDF.");
-        tablaComandos.AddRow("TABLE", "Enseña la tabla de participantes.");
-        tablaComandos.AddRow("TXT", "Abre el archivo TXT para poder registrar varios estudiantes.");
 
-        string tablaComandosMostrada = tablaComandos.ToStringAlternative();
 
-        Console.WriteLine(@$"
-        {tablaComandosMostrada}");
-
+        Console.WriteLine(tablaComandosMostrada);
+        Console.WriteLine("Presione 'ENTER' para volver a la línea de comandos: ");
+        Console.ForegroundColor = ConsoleColor.White;
         comandos.Ejecutar();
     }
 }
