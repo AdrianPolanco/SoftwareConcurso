@@ -19,7 +19,7 @@ class Tabla{
         tablaComandos.AddRow("SELECTED", "Imprime en pantalla todos los estudiantes seleccionados, independientemente de su rol.");
         tablaComandos.AddRow("REPORT", "Genera reportes de todos los estudiantes en formato PDF.");
         tablaComandos.AddRow("REPORT SELECTED", "Genera reportes de todos los estudiantes seleccionados en formato PDF.");
-        tablaComandos.AddRow("REPORT DEVELOPERS", "Genera reportes de todos los estudiantes seleccionados en el rol de 'Desarrollador en vivo' en formato PDF, en el que consta si tuvieron exito o no.");       
+        tablaComandos.AddRow("REPORT DEVELOPERS", "Genera reportes de todos los estudiantes seleccionados como desarrolladores en formato PDF, en el que consta si tuvieron exito o no.");       
         tablaComandos.AddRow("EXIT", "Finaliza del programa.");
         string tablaComandosMostrada = tablaComandos.ToStringAlternative();        
         Console.ForegroundColor = ConsoleColor.Yellow;
@@ -43,6 +43,5 @@ class Tabla{
         Console.WriteLine(tablaComandosMostrada);
         Console.WriteLine("Presione 'ENTER' para volver a la línea de comandos: ");
         Console.ForegroundColor = ConsoleColor.White;
-        comandos.Ejecutar();
     }
 }

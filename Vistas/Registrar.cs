@@ -66,7 +66,6 @@ class Registrar
             Console.WriteLine(tablaRegistroVisible);
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
-            Console.ReadKey();
         }catch(Exception err){
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Algo ha ido mal en el registro.");

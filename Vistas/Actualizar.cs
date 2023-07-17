@@ -76,14 +76,12 @@ class Actualizar{
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(" ");
                 Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
-                Console.ReadKey();
             }else{
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("No se encontro el estudiante solicitado.");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(" ");
                 Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
-                Console.ReadKey();
             }
             
         }else if(config == "MATR"){
@@ -113,14 +111,12 @@ class Actualizar{
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(" ");
                 Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
-                Console.ReadKey();
                 }else{
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"No se encontraron resultados, la matricula {matriculaParametro} no pertenece a ningún estudiante registrado.");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine(" ");
                     Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
-                    Console.ReadKey();
                 }
                 
             }else{

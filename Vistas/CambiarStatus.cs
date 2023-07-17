@@ -66,8 +66,9 @@ class Status{
                 contador += 1;
             }
         }
-        if(contador == estudiantes.Length){
-            controlador.CambiarMuchosStatus(estudiantes);
+        try{
+            if(contador == estudiantes.Length){
+            controlador.CambiarMuchosStatus(estudiantes); 
             Console.WriteLine("Todos los estudiantes han sido cambiados de estado.");
             Console.WriteLine(" ");
             Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
@@ -75,8 +76,12 @@ class Status{
             Console.WriteLine("ERROR: Uno de los ID que introduciste NO es válido, solo se admiten números.");
             Console.WriteLine(" ");
             Console.Write("Presione 'ENTER' para volver a intentarlo: ");
-            Console.ReadKey();
-        }
+
+        }}catch{
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("ERROR: UNO DE LOS ID QUE INSERTASTE NO EXISTE EN LA BASE DE DATOS");
+            Console.ForegroundColor = ConsoleColor.White;
+            }
 
     }
 }

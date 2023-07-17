@@ -82,7 +82,6 @@ ______  _   _  _____  _____   ___  ______
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" ");
             Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
-            Console.ReadKey();
         }
         else
         {
@@ -94,7 +93,6 @@ ______  _   _  _____  _____   ___  ______
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(" ");
             Console.Write("Presione 'ENTER' para volver a la línea de comandos: ");
-            Console.ReadKey();
         }
     }
 }
