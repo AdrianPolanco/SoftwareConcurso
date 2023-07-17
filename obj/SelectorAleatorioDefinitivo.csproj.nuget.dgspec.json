@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[7.0.8, )"
             },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "RazorLight": {
               "target": "Package",
               "version": "[2.3.1, )"

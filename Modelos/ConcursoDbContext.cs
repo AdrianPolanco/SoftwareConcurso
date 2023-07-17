@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace SelectorAleatorioDefinitivo.Modelos;
 
@@ -22,8 +23,20 @@ public partial class ConcursoDbContext : DbContext
     public virtual DbSet<Seleccionado> Seleccionados { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-SU18V4P\\SQLEXPRESS;Initial Catalog=CONCURSO_DB;Persist Security Info=True;TrustServerCertificate=true;User ID=sa;Password=06112001;");
+    {
+        if(!optionsBuilder.IsConfigured){
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string connectionString = configuration.GetConnectionString("CadenaConexion");
+
+           optionsBuilder.UseSqlServer(connectionString); 
+        }
+        
+    }
+        
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
